@@ -29,6 +29,11 @@ class HomeScreen extends StatelessWidget {
                   Icon(Icons.notifications_none_outlined),
                 ],
               ),
+              SizedBox(height: 20,),
+              Container(
+                height: 180,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Colors.grey),
+              )
             ],
           ),
         ),
