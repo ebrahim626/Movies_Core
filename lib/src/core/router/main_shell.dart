@@ -30,7 +30,7 @@ class MainShell extends StatelessWidget {
         ),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Courses'),
-          BottomNavigationBarItem(icon: HugeIcon(icon: HugeIconsStrokeRounded.userCircle), label: 'Profile'),
+          BottomNavigationBarItem(icon:  Icon(Icons.history), label: 'Profile'),
           // Add a third BottomNavigationBarItem here (e.g. Profile) —
           // it needs a matching StatefulShellBranch in go_router.dart too.
         ],
