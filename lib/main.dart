@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       useInheritedMediaQuery: true,
-      child: MaterialApp(
+      builder: (context , child) => MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           // This is the theme of your application.
