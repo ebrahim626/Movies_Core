@@ -58,8 +58,9 @@ class LandingScreen extends StatelessWidget {
               // Subtitle — bodyMedium already resolves to your
               // theme-aware bodyColor token, not a fixed grey.
               Text(
-                'Learn online at your own pace. Choose a course or '
-                    'continue one you already purchased.',
+                'Movies Core is the ultimate destination for '
+                    'every film. If you live for the thrill of the next big'
+                    ' release, this app is built just for you.',
                 textAlign: TextAlign.center,
                 style: textTheme.bodySmall,
               ),
@@ -71,16 +72,14 @@ class LandingScreen extends StatelessWidget {
               AppButton(
                 variant: AppButtonVariant.primary,
                 onPressed: () {},
-                child: const Text('Explore Courses'),
+                child: const Text('Explore As A Visitor'),
               ),
               40.ph,
 
               // Secondary — Login
               AppButton(
                 variant: AppButtonVariant.outline,
-                onPressed: () async {
-
-                },
+                onPressed: () async {},
                 child: const Text('Login'),
               ),
               SizedBox(height: 20.rh),
