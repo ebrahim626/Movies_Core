@@ -16,4 +16,5 @@ class AssetsPath {
   static const String loginArt = '$_images/login_art.png';
   static const String coverImage = '$_images/cover_image.jpg';
   static const String appLogo = '$_images/app_logo.png';
+  static const String appLogoUpper = '$_images/app_logo_upper.png';
 }
