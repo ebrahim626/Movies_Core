@@ -36,7 +36,7 @@ class LandingScreen extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     AssetsPath.loginArt,
-                    //width: 280.rw,
+                    // width: 338.rw,
                   ),
                   // child: SvgPicture.asset(
                   //   "assets/svgs/login_vector.svg",
@@ -50,7 +50,7 @@ class LandingScreen extends StatelessWidget {
               // the Montserrat font entirely. headlineSmall already
               // carries the right font + theme-aware title color.
               Text(
-                'Texas Online Drivers Ed',
+                'Movies Core',
                 textAlign: TextAlign.center,
                 style: textTheme.headlineSmall?.copyWith(fontSize: 24.rsp),
               ),

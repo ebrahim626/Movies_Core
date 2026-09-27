@@ -15,10 +15,10 @@ class SplashScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        // Fixed light background, not theme-driven — the logo's ring and
+        // Fixed light background, not theme — the logo's ring and
         // letters are navy, so it needs a light backdrop regardless of
         // the app's own light/dark mode.
-        color: Colors.white70,
+        color: AppColors.white,
         child: Center(
           // Single TweenAnimationBuilder drives the whole timeline as a
           // raw 0.0–1.0 progress value — no AnimationController, no
@@ -76,7 +76,7 @@ class SplashScreen extends StatelessWidget {
                     child: Transform.translate(
                       offset: Offset(0, textSlideY * 40),
                       child: const Text(
-                        'Texas Online Drivers Ed',
+                        'Movies Core',
                         style: TextStyle(
                           color: AppColors.primary900,
                           fontWeight: FontWeight.w700,
