@@ -60,6 +60,12 @@ class AppButtonStyles {
     // near-black background.
     final accentColor = isDark ? AppColors.primary400 : AppColors.primary700;
     return ButtonStyle(
+      textStyle: WidgetStateProperty.all(
+        const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       minimumSize: WidgetStateProperty.all(_minSize),
       shape: WidgetStateProperty.all(_shape),
       elevation: WidgetStateProperty.all(0),

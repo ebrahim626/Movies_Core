@@ -7,14 +7,24 @@ class AppColors {
   AppColors._();
 
   // ---- Primary (Brand Navy) ----
-  static const primary50 = Color(0xFFEEF2FF);
-  static const primary200 = Color(0xFFC7D2FE);
-  static const primary400 = Color(0xFF818CF8);
-  static const primary500 = Color(0xFF8366F1);
-  static const primary600 = Color(0xFF4F46E5);
-  static const primary700 = Color(0xFF1A2B8A); // brand base
-  static const primary800 = Color(0xFF1E1E4B);
-  static const primary900 = Color(0xFF0F0F2E);
+  // static const primary50 = Color(0xFFEEF2FF);
+  // static const primary200 = Color(0xFFC7D2FE);
+  // static const primary400 = Color(0xFF818CF8);
+  // static const primary500 = Color(0xFF8366F1);
+  // static const primary600 = Color(0xFF4F46E5);
+  // static const primary700 = Color(0xFF1A2B8A); // brand base
+  // static const primary800 = Color(0xFF1E1E4B);
+  // static const primary900 = Color(0xFF0F0F2E);
+
+  static const primary50 = Color(0xFFE9FAFC);
+  static const primary200 = Color(0xFFBCF0F5);
+  static const primary400 = Color(0xFF63DBE8);
+  static const primary500 = Color(0xFF37D1E2);
+  static const primary600 = Color(0xFF1FC4D6);
+  static const primary700 = Color(0xFF1CB1C1); // brand base
+  static const primary800 = Color(0xFF158793);
+  static const primary900 = Color(0xFF0D5259);
+
 
   // ---- Secondary (Slate) ----
   static const slate50 = Color(0xFFF8FAFC);

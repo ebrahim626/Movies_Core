@@ -23,7 +23,9 @@ class LandingScreen extends StatelessWidget {
 
     return Scaffold(
       // Was hardcoded Colors.white — now tracks light/dark scaffoldBackground.
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor:  isDark
+          ? AppColors.primary50
+          : AppColors.primary50,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.rw),
@@ -80,7 +82,7 @@ class LandingScreen extends StatelessWidget {
               AppButton(
                 variant: AppButtonVariant.outline,
                 onPressed: () async {},
-                child: const Text('Login'),
+                child: Text('Login',),
               ),
               SizedBox(height: 20.rh),
 
