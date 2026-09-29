@@ -7,7 +7,7 @@ class AssetsPath {
   // ---------------------------------------------------------------------
   // SVGs
   // ---------------------------------------------------------------------
-  //static const String loginVector = '$_svgs/login_vector.svg';
+
   static const String successVector = "$_svgs/success_badge.svg";
 
   // ---------------------------------------------------------------------
@@ -17,4 +17,5 @@ class AssetsPath {
   static const String coverImage = '$_images/cover_image.jpg';
   static const String appLogo = '$_images/app_logo.png';
   static const String appLogoUpper = '$_images/app_logo_upper.png';
+  static const String loginVector = '$_images/login_vector.png';
 }
