@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movies_core/src/feature/home/view/home_screen.dart';
 import '../../feature/welcome/landing/view/landing_screen.dart';
 import '../../feature/welcome/splash/view/splash_screen.dart';
+import '../utils/reusable_transition/reusable_transition.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -26,12 +27,30 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.landingRoute,
         name: LandingScreen.name,
-        builder: (context, state) => LandingScreen(),
+        pageBuilder: (context, state) => cinematicRevealPage(
+          state: state,
+          child: const LandingScreen(),
+        ),
       ),
+
+      // router when need 2 types of transition --
+      // GoRoute(
+      //   path: '/home',
+      //   pageBuilder: (context, state) {
+      //     final child = const HomeScreen();
+      //     return state.extra == 'fromSplash'
+      //         ? fadeScaleTransitionPage(state: state, child: child)
+      //         : MaterialPage(key: state.pageKey, child: child);
+      //   },
+      // ),
+
       GoRoute(
         path: AppRoutes.homeRoute,
         name: HomeScreen.name,
-        builder: (context, state) => HomeScreen(),
+        pageBuilder: (context, state) => cinematicRevealPage(
+          state: state,
+          child: const HomeScreen(),
+        ),
       ),
 
       // StatefulShellRoute.indexedStack(
