@@ -76,7 +76,7 @@ class LandingScreen extends StatelessWidget {
                 onPressed: () {},
                 child: const Text('Explore As A Visitor'),
               ),
-              40.ph,
+              32.ph,
 
               // Secondary — Login
               AppButton(

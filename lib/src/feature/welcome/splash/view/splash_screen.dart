@@ -228,7 +228,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
                       child: const Text(
                         'Movies Core',
                         style: TextStyle(
-                          color: AppColors.primary900,
+                          color: AppColors.primary800,
                           fontWeight: FontWeight.w700,
                           fontSize: 20,
                         ),
