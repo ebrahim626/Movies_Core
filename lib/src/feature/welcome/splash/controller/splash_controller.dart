@@ -13,6 +13,8 @@ final splashNextRouteProvider = FutureProvider.autoDispose<String>((ref) async {
 
   if (!isLoggedIn) {
     return AppRoutes.landingRoute;
+  }else {
+    return AppRoutes.homeRoute;
   }
 
 });
