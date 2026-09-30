@@ -23,6 +23,13 @@ dependencies:
   hive_ce: ^2.20.1
   hive_ce_flutter: ^2.4.0
   path_provider: ^2.1.6
+  pretty_dio_logger: ^1.4.0
+  dio: ^5.11.1
+  intl: ^0.20.2
+  connectivity_plus: ^7.3.1
+  dio_cookie_manager: ^3.5.0
+  cookie_jar: ^4.0.9
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
