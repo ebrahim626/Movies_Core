@@ -84,6 +84,7 @@ class LandingScreen extends StatelessWidget {
                 onPressed: () async {},
                 child: Text('Login',),
               ),
+
               SizedBox(height: 20.rh),
 
               // Footer — Need Help? Support
