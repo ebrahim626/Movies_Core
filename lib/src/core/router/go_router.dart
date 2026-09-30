@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -6,7 +5,6 @@ import 'package:movies_core/src/feature/home/view/home_screen.dart';
 import '../../feature/welcome/landing/view/landing_screen.dart';
 import '../../feature/welcome/splash/view/splash_screen.dart';
 import 'app_routes.dart';
-import 'main_shell.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
 
