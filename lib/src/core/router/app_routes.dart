@@ -3,6 +3,7 @@ class AppRoutes {
 
   static const String splashRoute  = "/";
   static const String landingRoute = "/landing";
+  static const String homeRoute = "/home-screen";
   static const String forgotPasswordRoute = "/forgot-password";
   static const String otpRoute = "/otp";
   static const String createNewPasswordRoute = "/create-new-password";
