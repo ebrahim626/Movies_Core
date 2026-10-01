@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_core/src/feature/welcome/landing/controller/landing_controller.dart';
 import '../../../../core/config/constant/assets_path.dart';
 import '../../../../core/extensions/gap.dart';
 import '../../../../core/extensions/responsive.dart';
@@ -10,13 +12,15 @@ import '../../../common/widgets/button/app_button.dart';
 /// Matches "Splash Screen 02" design — illustration, title, subtitle,
 /// primary "Explore Courses" CTA, secondary "Login" outline button,
 /// and a "Need Help? Support" footer link.
-class LandingScreen extends StatelessWidget {
+class LandingScreen extends ConsumerWidget {
   const LandingScreen({super.key});
 
   static const String name = "landing-screen";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(loginProvider);
+
     final textTheme = Theme.of(context).textTheme;
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -80,6 +84,7 @@ class LandingScreen extends StatelessWidget {
 
               // Secondary — Login
               AppButton(
+
                 variant: AppButtonVariant.outline,
                 onPressed: () async {},
                 child: Text('Login',),
