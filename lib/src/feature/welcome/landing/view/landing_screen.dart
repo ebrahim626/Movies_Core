@@ -20,6 +20,7 @@ class LandingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(loginProvider);
+    final notifier = ref.read(loginProvider.notifier);
 
     final textTheme = Theme.of(context).textTheme;
 
@@ -84,9 +85,10 @@ class LandingScreen extends ConsumerWidget {
 
               // Secondary — Login
               AppButton(
-
                 variant: AppButtonVariant.outline,
-                onPressed: () async {},
+                onPressed: () async {
+                  notifier.logIn(context);
+                },
                 child: Text('Login',),
               ),
 
