@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_core/src/core/utils/reusable_transition/slide_down_reveal_page.dart';
 import 'package:movies_core/src/feature/home/view/home_screen.dart';
 import '../../feature/welcome/landing/view/landing_screen.dart';
 import '../../feature/welcome/splash/view/splash_screen.dart';
-import '../utils/reusable_transition/reusable_transition.dart';
+import '../utils/reusable_transition/cinematic_reveal_page.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -47,7 +48,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.homeRoute,
         name: HomeScreen.name,
-        pageBuilder: (context, state) => cinematicRevealPage(
+        pageBuilder: (context, state) => slideDownRevealPage(
           state: state,
           child: const HomeScreen(),
         ),
