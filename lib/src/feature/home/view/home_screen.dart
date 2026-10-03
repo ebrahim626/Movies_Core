@@ -95,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 189, // enough for image (135) + gap (6) + 2 lines of text
+                      height: 195, // enough for image (135) + gap (6) + 2 lines of text
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 12,
@@ -144,7 +144,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 189, // enough for image (135) + gap (6) + 2 lines of text
+                      height: 195, // enough for image (135) + gap (6) + 2 lines of text
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: 12,
