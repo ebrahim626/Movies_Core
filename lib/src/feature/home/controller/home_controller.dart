@@ -25,4 +25,12 @@ class HomeController {
       path: ApiEndpoints.popularMoviesEndpoint,
     );
   }
+
+  Future<ApiResponse<dynamic>> upcomingMovies() async {
+    return await apiClient.get(
+      apiType: APIType.private,
+      tokenType: TokenType.bearerToken,
+      path: ApiEndpoints.upcomingMoviesEndpoint,
+    );
+  }
 }
