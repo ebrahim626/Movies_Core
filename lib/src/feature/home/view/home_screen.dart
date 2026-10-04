@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_core/src/feature/home/controller/home_controller.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   static const String name = "home-screen";
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(homeProvider);
+    final notifier = ref.read(homeProvider.notifier);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

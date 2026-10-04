@@ -1,36 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_core/src/feature/home/repository/home_repository.dart';
 import '../../../core/network/api_client.export.dart';
 
-final loginRepositoryProvider = Provider<HomeController>((ref) {
-  return HomeController(apiClient: ref.read(apiClientProvider));
-});
+final homeProvider = AsyncNotifierProvider<HomeProvider, void>(
+  HomeProvider.new,
+);
 
-class HomeController {
-  final ApiClient apiClient;
+class HomeProvider extends AsyncNotifier <void> {
+  @override
+  FutureOr<void> build() async {
+    final repository = ref.read(homeRepository);
+    final response = await repository.topRatedMovies();
 
-  HomeController({required this.apiClient});
-
-  Future<ApiResponse<dynamic>> topRatedMovies() async {
-    return await apiClient.get(
-      apiType: APIType.private,
-      tokenType: TokenType.bearerToken,
-      path: ApiEndpoints.topRatedEndpoint,
-    );
   }
 
-  Future<ApiResponse<dynamic>> popularMovies() async {
-    return await apiClient.get(
-      apiType: APIType.private,
-      tokenType: TokenType.bearerToken,
-      path: ApiEndpoints.popularMoviesEndpoint,
-    );
-  }
 
-  Future<ApiResponse<dynamic>> upcomingMovies() async {
-    return await apiClient.get(
-      apiType: APIType.private,
-      tokenType: TokenType.bearerToken,
-      path: ApiEndpoints.upcomingMoviesEndpoint,
-    );
-  }
 }
