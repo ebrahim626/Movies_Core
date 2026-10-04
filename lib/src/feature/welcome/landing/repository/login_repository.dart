@@ -14,7 +14,7 @@ class LoginRepository {
   Future<ApiResponse<dynamic>> login() async {
     return await apiClient.post(
       apiType: APIType.public,
-      path: ApiEndpoints.loginEndpoint,
+      path: ApiEndpoints.topRatedEndpoint,
     );
   }
 }
