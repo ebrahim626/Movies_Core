@@ -9,7 +9,10 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(homeProvider);
+    final home = ref.watch(homeProvider);
+    final upcomingMovies = home.value?.upcoming;
+    final popularMovies = home.value?.popular;
+    final topRatedMovies = home.value?.topRated;
     final notifier = ref.read(homeProvider.notifier);
 
     return Scaffold(
@@ -102,35 +105,35 @@ class HomeScreen extends ConsumerWidget {
                     child: SizedBox(
                       height: 195, // enough for image (135) + gap (6) + 2 lines of text
                       child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: 12,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 12,
                           itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.only(right: 12),
-                            child: Column(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                                  height: 135,
-                                  width: 111,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.grey,
+                            return Padding(
+                              padding: EdgeInsets.only(right: 12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                                    height: 135,
+                                    width: 111,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      color: Colors.grey,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(height: 6),
-                                SizedBox(
-                                  width: 111,
-                                  child: Text(
-                                    "Avatar: The Way of Water",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
+                                  SizedBox(height: 6),
+                                  SizedBox(
+                                    width: 111,
+                                    child: Text(
+                                      "Avatar: The Way of Water",
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
+                                ],
+                              ),
+                            );
+                          }
                       ),
                     ),
                   ),
@@ -192,3 +195,5 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
+
+
