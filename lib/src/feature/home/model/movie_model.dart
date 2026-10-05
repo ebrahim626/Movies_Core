@@ -22,12 +22,12 @@ class Movie {
 
 class HomeData {
   final List<Movie> popular;
-  final List<Movie> latest;
+  final List<Movie> upcoming;
   final List<Movie> topRated;
 
   const HomeData({
     required this.popular,
-    required this.latest,
+    required this.upcoming,
     required this.topRated,
   });
 }
