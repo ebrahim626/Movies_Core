@@ -26,13 +26,18 @@ class AppColors {
   static const primary900 = Color(0xFF0D5259);
 
 
-  // ---- Secondary (Slate) ----
-  static const slate50 = Color(0xFFF8FAFC);
-  static const slate200 = Color(0xFFE2E8F0);
-  static const slate500 = Color(0xFF64748B);
-  static const slate600 = Color(0xFF475569);
-  static const slate700 = Color(0xFF334155);
-  static const slate800 = Color(0xFF1E293B);
+// ---- Secondary (Dark Slate) ----
+  static const slate50  = Color(0xFFCBD5E1); // darker than original 50
+  static const slate100 = Color(0xFF94A3B8);
+  static const slate200 = Color(0xFF64748B); // was 500 in original
+  static const slate300 = Color(0xFF475569); // was 600
+  static const slate400 = Color(0xFF334155); // was 700
+  static const slate500 = Color(0xFF1E293B); // was 800
+  static const slate600 = Color(0xFF16202F);
+  static const slate700 = Color(0xFF0B1220);
+  static const slate800 = Color(0xFF020617);
+
+
 
   // ---- Success ----
   static const success50 = Color(0xFFF0FDF4);

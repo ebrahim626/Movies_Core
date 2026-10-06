@@ -1,6 +1,11 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_core/src/core/service/helper/tmdb_helper.dart';
+import 'package:movies_core/src/core/utils/theme/app_tokens.dart';
+import 'package:movies_core/src/feature/common/widgets/button/app_button.dart';
 import 'package:movies_core/src/feature/home/controller/home_controller.dart';
+
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -14,9 +19,10 @@ class HomeScreen extends ConsumerWidget {
     final popularMovies = home.value?.popular;
     final topRatedMovies = home.value?.topRated;
     final notifier = ref.read(homeProvider.notifier);
+    log("movies image path: ${popularMovies?[1].posterPath}");
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.slate600,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16, vertical: 22),
@@ -46,33 +52,25 @@ class HomeScreen extends ConsumerWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.grey,
+                  // color: Colors.grey,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      TmdbImage.poster(popularMovies?[2].posterPath),
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Watch popular movies 1917"),
+                    Text("Watch popular movies : ${popularMovies?[2].title}"),
                     SizedBox(height: 10),
                     Text("Lyrics are the words that make up a song."),
                     Spacer(),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          height: 36,
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(99),
-                            color: Colors.blue,
-                          ),
-                          child: Center(
-                            child: Text(
-                              "Click Here",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ],
+                    AppButton(
+                      onPressed: () {},
+                      width: 133,
+                      child: Text("Clicked Here"),
                     ),
                   ],
                 ),
@@ -93,7 +91,7 @@ class HomeScreen extends ConsumerWidget {
               SizedBox(height: 20),
               Row(
                 children: [
-                  Text("Latest Movies"),
+                  Text("Upcoming Movies"),
                   Spacer(),
                   Text("See all", style: TextStyle(color: Colors.blueAccent)),
                 ],
@@ -103,37 +101,52 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 195, // enough for image (135) + gap (6) + 2 lines of text
+                      height:
+                          195, // enough for image (135) + gap (6) + 2 lines of text
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 12,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 12),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                                    height: 135,
-                                    width: 111,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.grey,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: upcomingMovies?.length,
+                        itemBuilder: (context, index) {
+                          final upcomingMovie = upcomingMovies?[index];
+                          return Padding(
+                            padding: EdgeInsets.only(right: 12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 16,
+                                    horizontal: 12,
+                                  ),
+                                  height: 135,
+                                  width: 111,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    // color: Colors.grey,
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        TmdbImage.poster(
+                                          upcomingMovie?.posterPath,
+                                        ),
+                                      ),
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  SizedBox(height: 6),
-                                  SizedBox(
-                                    width: 111,
+                                ),
+                                SizedBox(height: 6),
+                                SizedBox(
+                                  width: 111,
+                                  child: Center(
                                     child: Text(
-                                      "Avatar: The Way of Water",
+                                      "${upcomingMovie?.title}",
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          }
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -152,37 +165,52 @@ class HomeScreen extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: SizedBox(
-                      height: 195, // enough for image (135) + gap (6) + 2 lines of text
+                      height:
+                          195, // enough for image (135) + gap (6) + 2 lines of text
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 12,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.only(right: 12),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                                    height: 135,
-                                    width: 111,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: Colors.grey,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: topRatedMovies?.length,
+                        itemBuilder: (context, index) {
+                          final topRatedMovie = topRatedMovies?[index];
+                          return Padding(
+                            padding: EdgeInsets.only(right: 12),
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 16,
+                                    horizontal: 12,
+                                  ),
+                                  height: 135,
+                                  width: 111,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    // color: Colors.grey,
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        TmdbImage.poster(
+                                          topRatedMovie?.posterPath,
+                                        ),
+                                      ),
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                  SizedBox(height: 6),
-                                  SizedBox(
-                                    width: 111,
+                                ),
+                                SizedBox(height: 6),
+                                SizedBox(
+                                  width: 111,
+                                  child: Center(
                                     child: Text(
-                                      "Avatar: The Way of Water",
+                                      "${topRatedMovie?.title}",
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          }
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -195,5 +223,3 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
-
-

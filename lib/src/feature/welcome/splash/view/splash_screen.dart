@@ -158,7 +158,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
     });
 
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.primary50,
       body: Center(
         child: AnimatedBuilder(
           animation: _controller,
