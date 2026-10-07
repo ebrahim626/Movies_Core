@@ -4,7 +4,7 @@ import 'package:movies_core/src/core/database/hive_service.dart';
 import 'package:movies_core/src/core/router/app_routes.dart';
 
 final splashNextRouteProvider = FutureProvider.autoDispose<String>((ref) async {
-  await Future.delayed(const Duration(milliseconds: 2200));
+  await Future.delayed(const Duration(milliseconds: 2800));
 
   final cacheService = ref.read(cacheServiceProvider);
   final isLoggedIn = await cacheService.isLoggedIn;

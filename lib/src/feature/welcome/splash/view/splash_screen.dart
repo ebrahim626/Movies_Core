@@ -32,7 +32,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1800),
+      duration: const Duration(milliseconds: 2000),
     );
 
     // -----------------------------------------
@@ -137,7 +137,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen>
       ),
     );
 
-    _controller.forward();
+    // Delay before starting the animation
+    Future.delayed(const Duration(milliseconds: 800), () {
+      if (mounted) _controller.forward();
+    });
   }
 
   @override
