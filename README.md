@@ -62,3 +62,20 @@ The app is focused on movie discovery, information, updates, and trailers.
 🏗️ Project Structure
 
 The project follows a feature-based Flutter architecture to keep the code organized, scalable, and maintainable.
+
+lib/
+├── core/
+│   ├── config/
+│   ├── network/
+│   ├── router/
+│   ├── theme/
+│   └── utils/
+│
+├── src/
+│   └── feature/
+│       ├── home/
+│       ├── movie/
+│       ├── welcome/
+│       └── ...
+│
+└── main.dart
