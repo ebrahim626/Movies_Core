@@ -1,17 +1,81 @@
-# movies_core
+🎬 MoviesCore
 
-A new Flutter project.
+MoviesCore is a modern Flutter-based movie discovery app designed to keep users updated with the latest and upcoming movies.
 
-## Getting Started
+MoviesCore is not a movie streaming app.
+It does not provide live movie watching or streaming. Instead, it helps users discover movies, stay updated with upcoming releases, explore trailers, and keep track of the latest movie releases.
 
-This project is a starting point for a Flutter application.
+✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+🎥 Latest Movies — Discover recently released movies.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+🔥 Popular Movies — Explore currently popular movies.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🚀 Upcoming Movies — Stay updated with upcoming releases.
+
+🎞️ Movie Trailers — Watch trailers and previews.
+
+🔍 Movie Discovery — Explore movies and find new titles.
+
+📱 Modern UI — Clean and responsive interface built with Flutter.
+
+🌙 Dark & Light Theme — Comfortable viewing experience in different themes.
+
+🛠️ Built With
+
+Flutter
+
+Dart
+
+Riverpod — State management
+
+GoRouter — Navigation
+
+REST API — Movie data
+
+Firebase — Backend services where applicable
+
+📱 About the App
+
+MoviesCore focuses on movie information and updates, making it easier to discover what's new, what's popular, and what's coming soon.
+
+The app is intended for users who want to:
+
+Find newly released movies
+
+Discover upcoming movies
+
+Check popular movies
+
+Explore movie details
+
+Watch movie trailers
+
+Stay updated with the movie world
+
+🚫 No Movie Streaming
+
+MoviesCore does not host or stream full movies.
+
+The app is focused on movie discovery, information, updates, and trailers.
+
+🏗️ Project Structure
+
+The project follows a feature-based Flutter architecture to keep the code organized, scalable, and maintainable.
+
+lib/
+├── core/
+│   ├── config/
+│   ├── network/
+│   ├── router/
+│   ├── theme/
+│   └── utils/
+│
+├── src/
+│   └── feature/
+│       ├── home/
+│       ├── movie/
+│       ├── welcome/
+│       └── ...
+│
+└── main.dart
