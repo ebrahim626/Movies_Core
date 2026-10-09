@@ -71,7 +71,7 @@ class _PopularCarouselState extends State<PopularCarousel> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
-                    image: NetworkImage(TmdbImage.poster(movie.posterPath)),
+                    image: NetworkImage(TmdbImage.poster(movie.backdropPath)),
                     fit: BoxFit.cover,
                   ),
                 ),
