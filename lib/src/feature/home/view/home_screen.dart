@@ -5,6 +5,7 @@ import 'package:movies_core/src/core/service/helper/tmdb_helper.dart';
 import 'package:movies_core/src/core/utils/theme/app_tokens.dart';
 import 'package:movies_core/src/feature/common/widgets/button/app_button.dart';
 import 'package:movies_core/src/feature/home/controller/home_controller.dart';
+import 'package:movies_core/src/feature/home/view/components/popular_carousel.dart';
 
 
 class HomeScreen extends ConsumerWidget {
@@ -19,7 +20,6 @@ class HomeScreen extends ConsumerWidget {
     final popularMovies = home.value?.popular;
     final topRatedMovies = home.value?.topRated;
     final notifier = ref.read(homeProvider.notifier);
-    log("movies image path: ${popularMovies?[1].posterPath}");
 
     return Scaffold(
       backgroundColor: AppColors.slate600,
@@ -46,48 +46,49 @@ class HomeScreen extends ConsumerWidget {
                 ],
               ),
               SizedBox(height: 20),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
-                height: 180,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  // color: Colors.grey,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      TmdbImage.poster(popularMovies?[2].posterPath),
-                    ),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Watch popular movies : ${popularMovies?[2].title}"),
-                    SizedBox(height: 10),
-                    Text("Lyrics are the words that make up a song."),
-                    Spacer(),
-                    AppButton(
-                      onPressed: () {},
-                      width: 133,
-                      child: Text("Clicked Here"),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(radius: 4, backgroundColor: Colors.blue),
-                  SizedBox(width: 3),
-                  CircleAvatar(radius: 3, backgroundColor: Colors.grey),
-                  SizedBox(width: 3),
-                  CircleAvatar(radius: 3, backgroundColor: Colors.grey),
-                  SizedBox(width: 3),
-                  CircleAvatar(radius: 3, backgroundColor: Colors.grey),
-                ],
-              ),
+              PopularCarousel(movies: popularMovies ?? const []),
+              // Container(
+              //   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+              //   height: 180,
+              //   width: double.infinity,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(15),
+              //     // color: Colors.grey,
+              //     image: DecorationImage(
+              //       image: NetworkImage(
+              //         TmdbImage.poster(popularMovies?[2].posterPath),
+              //       ),
+              //       fit: BoxFit.cover,
+              //     ),
+              //   ),
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text("Watch popular movies : ${popularMovies?[2].title}"),
+              //       SizedBox(height: 10),
+              //       Text("Lyrics are the words that make up a song."),
+              //       Spacer(),
+              //       AppButton(
+              //         onPressed: () {},
+              //         width: 133,
+              //         child: Text("Clicked Here"),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // SizedBox(height: 16),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     CircleAvatar(radius: 4, backgroundColor: Colors.blue),
+              //     SizedBox(width: 3),
+              //     CircleAvatar(radius: 3, backgroundColor: Colors.grey),
+              //     SizedBox(width: 3),
+              //     CircleAvatar(radius: 3, backgroundColor: Colors.grey),
+              //     SizedBox(width: 3),
+              //     CircleAvatar(radius: 3, backgroundColor: Colors.grey),
+              //   ],
+              // ),
               SizedBox(height: 20),
               Row(
                 children: [
