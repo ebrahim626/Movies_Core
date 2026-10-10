@@ -8,6 +8,9 @@ import 'package:movies_core/src/feature/common/widgets/button/app_button.dart';
 import 'package:movies_core/src/feature/home/controller/home_controller.dart';
 import 'package:movies_core/src/feature/home/view/components/popular_carousel.dart';
 
+import 'components/carousel_shimmer.dart';
+import 'components/movie_row_shimmer.dart';
+
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -21,6 +24,7 @@ class HomeScreen extends ConsumerWidget {
     final popularMovies = home.value?.popular;
     final topRatedMovies = home.value?.topRated;
     final notifier = ref.read(homeProvider.notifier);
+    final isLoading = !home.hasValue && home.isLoading; // first load only
 
     return Scaffold(
       backgroundColor: AppColors.slate600,
@@ -48,6 +52,9 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
                 SizedBox(height: 20),
+                // Banner
+                isLoading
+                    ? const CarouselShimmer() :
                 PopularCarousel(movies: popularMovies ?? const []),
                 // Container(
                 //   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
@@ -92,6 +99,10 @@ class HomeScreen extends ConsumerWidget {
                 //   ],
                 // ),
                 SizedBox(height: 20),
+                // Upcoming row
+                isLoading
+                    ? const MovieRowShimmer()
+                    :
                 Row(
                   children: [
                     Text("Upcoming Movies", style: context.text.titleMedium?.copyWith(color: Colors.white),),
@@ -100,6 +111,10 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
                 SizedBox(height: 12),
+                // Upcoming row
+                isLoading
+                    ? const MovieRowShimmer()
+                    :
                 Row(
                   children: [
                     Expanded(
@@ -156,6 +171,10 @@ class HomeScreen extends ConsumerWidget {
                   ],
                 ),
                 SizedBox(height: 8),
+                // Upcoming row
+                isLoading
+                    ? const MovieRowShimmer()
+                    :
                 Row(
                   children: [
                     Text("Top Rated", style: context.text.titleMedium?.copyWith(color: Colors.white),),
