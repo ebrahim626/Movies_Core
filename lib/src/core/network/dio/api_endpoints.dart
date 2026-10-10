@@ -8,6 +8,12 @@ class ApiEndpoints {
   //static const String baseUrl = "https://obliged-cytoplast-cornhusk.ngrok-free.dev";
   static const String baseUrl = "https://dev.drivableed.com";
 
+  static const String createRequestTokenEndpoint = "$_v1/authentication/token/new";
+
+  static const String createSessionEndpoint = "$_v1/authentication/session/new";
+
+  static const String deleteSessionEndpoint = "$_v1/authentication/session";
+
   static const String topRatedEndpoint = "$_v1/movie/top_rated";
 
   static const  String popularMoviesEndpoint = "$_v1/movie/popular";

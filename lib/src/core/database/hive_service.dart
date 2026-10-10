@@ -41,6 +41,7 @@ class CacheService {
 
   // ====================== KEYS ======================
   static const _bearerToken = 'bearerToken';
+  static const _sessionId = 'sessionId';
   static const _refreshToken = 'refreshToken';
   static const _authToken = 'authToken';
   static const _isLoggedIn = 'isLoggedIn';
@@ -59,6 +60,10 @@ class CacheService {
   Future<String?> get bearerToken async => await _get<String>(_bearerToken);
   Future<void> setBearerToken(String? value) async =>
       await _put(_bearerToken, value);
+
+  Future<String?> get sessionId async => await _get<String>(_sessionId);
+  Future<void> setSessionId(String? value) async =>
+      await _put(_sessionId, value);
 
   Future<String?> get refreshToken async => await _get<String>(_refreshToken);
   Future<void> setRefreshToken(String? value) async =>
@@ -97,6 +102,7 @@ class CacheService {
   Future<void> clearAuthTokens() async {
     await Future.wait([
       delete(_bearerToken),
+      delete(_sessionId),
       delete(_refreshToken),
       delete(_authToken),
       delete(_isLoggedIn),

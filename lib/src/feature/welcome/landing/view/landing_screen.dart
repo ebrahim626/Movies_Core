@@ -1,10 +1,12 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_core/src/feature/welcome/landing/controller/landing_controller.dart';
 import '../../../../core/config/constant/assets_path.dart';
 import '../../../../core/extensions/gap.dart';
 import '../../../../core/extensions/responsive.dart';
+import '../../../../core/router/app_routes.dart';
 import '../../../../core/utils/theme/app_tokens.dart';
 import '../../../common/widgets/button/app_button.dart';
 
@@ -19,8 +21,16 @@ class LandingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(loginProvider);
+    final login = ref.watch(loginProvider);
     final notifier = ref.read(loginProvider.notifier);
+
+    // ref.listen(loginProvider, (_, next) {
+    //   if (next.hasError) {
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(content: Text(next.error.toString())),
+    //     );
+    //   }
+    // });
 
     final textTheme = Theme.of(context).textTheme;
 
@@ -86,10 +96,10 @@ class LandingScreen extends ConsumerWidget {
               // Secondary — Login
               AppButton(
                 variant: AppButtonVariant.outline,
-                onPressed: () async {
+                onPressed: () {
                   notifier.logIn(context);
                 },
-                child: Text('Login',),
+                child:  const Text('Login'),
               ),
 
               SizedBox(height: 20.rh),

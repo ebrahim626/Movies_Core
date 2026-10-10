@@ -12,6 +12,8 @@ class ApiResponse<T> {
   final DioException? error;
 
   bool get isSuccess => error == null;
+
+  void operator [](String other) {}
 }
 
 final apiClientProvider = Provider<ApiClient>((ref) {
@@ -134,6 +136,42 @@ class ApiClient {
     }
   }
 
+  /// DELETE
+  Future<ApiResponse<dynamic>> delete({
+    required APIType apiType,
+    required String path,
+    TokenType? tokenType,
+    dynamic data,
+    Map<String, dynamic>? query,
+    Map<String, dynamic>? headers,
+    CancelToken? cancelToken,
+  }) async {
+    await _ready;
+    final connectivityFailure = _checkConnectivity();
+    if (connectivityFailure != null) return connectivityFailure;
+    try {
+      final options = await _getOptions(
+        apiType: apiType,
+        extraHeaders: {...?headers},
+        tokenType: tokenType,
+      );
+      final response = await _dio.delete(
+        path,
+        data: data,
+        queryParameters: query,
+        options: options,
+        cancelToken: cancelToken,
+      );
+      return ApiResponse.success(
+        response.data,
+        statusCode: response.statusCode,
+        headers: response.headers,
+      );
+    } on DioException catch (e) {
+      return _handleDioException(e);
+    }
+  }
+
   /// POST
   Future<ApiResponse<dynamic>> post({
     required APIType apiType,
@@ -232,9 +270,14 @@ class ApiClient {
 
   ApiResponse<T> _handleDioException<T>(DioException e) {
     final responseData = e.response?.data;
-    final backendMessage =
-    (responseData is Map && responseData['message'] != null)
-        ? responseData['message']
+
+    // final backendMessage =
+    // (responseData is Map && responseData['message'] != null)
+    //     ? responseData['message']
+    //     : 'Something went wrong';
+
+    final backendMessage = (responseData is Map)
+        ? (responseData['status_message'] ?? responseData['message'] ?? 'Something went wrong')
         : 'Something went wrong';
 
     return ApiResponse.failure(
