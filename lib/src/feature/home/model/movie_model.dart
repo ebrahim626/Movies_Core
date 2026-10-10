@@ -1,10 +1,12 @@
+import 'dart:ffi';
+
 class Movie {
   final int id;
   final String title;
   final String? posterPath;
   final String? backdropPath;
   final String? releaseDate;
-  final int? popularity;
+  final num? popularity;
   final double voteAverage;
 
   const Movie({
@@ -23,7 +25,7 @@ class Movie {
     posterPath: json['poster_path'] as String?,
     backdropPath: json['backdrop_path'] as String?,
     releaseDate: json['release_date'] as String?,
-    popularity: json['popularity'] as int?,
+    popularity: json['popularity'] as double?,
     voteAverage: (json['vote_average'] as num?)?.toDouble() ?? 0,
   );
 

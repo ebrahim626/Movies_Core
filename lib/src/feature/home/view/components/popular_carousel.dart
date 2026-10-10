@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:movies_core/src/core/extensions/context.dart';
+import 'package:movies_core/src/core/service/helper/date_formatter.dart';
 import 'package:movies_core/src/core/service/helper/tmdb_helper.dart';
+import 'package:movies_core/src/core/utils/theme/app_tokens.dart';
 import 'package:movies_core/src/feature/common/widgets/button/app_button.dart';
 
 import '../../model/movie_model.dart';
@@ -65,9 +68,18 @@ class _PopularCarouselState extends State<PopularCarousel> {
             onPageChanged: (i) => setState(() => _current = i),
             itemBuilder: (context, index) {
               final movie = widget.movies[index];
+              final textStyle = context.text.titleMedium?.copyWith(
+                color: Colors.white,
+                shadows: const [Shadow(blurRadius: 6, color: Colors.black54)],
+              );
+              final dateStyle = context.text.titleSmall?.copyWith(
+                color: Colors.white,
+                shadows: const [Shadow(blurRadius: 6, color: Colors.black54)],
+              );
+
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 2),
-                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   image: DecorationImage(
@@ -75,21 +87,50 @@ class _PopularCarouselState extends State<PopularCarousel> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Stack(
                   children: [
-                    Text(
-                      "Watch popular movies : ${movie.title}",
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
+                    // Dark gradient overlay
+                    Positioned.fill(
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.black.withValues(alpha: 0.55),
+                              Colors.black.withValues(alpha: 0.25),
+                              Colors.black.withValues(alpha: 0.75),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                    const SizedBox(height: 10),
-                    const Text("Lyrics are the words that make up a song."),
-                    const Spacer(),
-                    AppButton(
-                      onPressed: () {},
-                      width: 133,
-                      child: const Text("Clicked Here"),
+                    // Content
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Watch popular movies : ${movie.title}",
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: textStyle,
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            "Release Date : ${DateFormatter.format(movie.releaseDate)}",
+                            style: dateStyle,
+                          ),
+                          const Spacer(),
+                          AppButton(
+                            onPressed: () {},
+                            width: 133,
+                            height: 40,
+                            child: const Text("Clicked Here"),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -108,7 +149,7 @@ class _PopularCarouselState extends State<PopularCarousel> {
               width: active ? 16 : 6,
               height: active ? 8 : 6,
               decoration: BoxDecoration(
-                color: active ? Colors.blue : Colors.grey,
+                color: active ? AppColors.primary700 : Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
             );

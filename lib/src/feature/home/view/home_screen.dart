@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movies_core/src/core/extensions/context.dart';
 import 'package:movies_core/src/core/service/helper/tmdb_helper.dart';
 import 'package:movies_core/src/core/utils/theme/app_tokens.dart';
 import 'package:movies_core/src/feature/common/widgets/button/app_button.dart';
@@ -93,9 +94,9 @@ class HomeScreen extends ConsumerWidget {
                 SizedBox(height: 20),
                 Row(
                   children: [
-                    Text("Upcoming Movies"),
+                    Text("Upcoming Movies", style: context.text.titleMedium?.copyWith(color: Colors.white),),
                     Spacer(),
-                    Text("See all", style: TextStyle(color: Colors.blueAccent)),
+                    Text("See all", style: context.text.titleMedium?.copyWith(color: Colors.blueAccent)),
                   ],
                 ),
                 SizedBox(height: 12),
@@ -139,7 +140,7 @@ class HomeScreen extends ConsumerWidget {
                                     width: 111,
                                     child: Center(
                                       child: Text(
-                                        "${upcomingMovie?.title}",
+                                        "${upcomingMovie?.title}", style: context.text.bodySmall?.copyWith(color: Colors.white),
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                       ),
@@ -154,15 +155,15 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 8),
                 Row(
                   children: [
-                    Text("Top Rated"),
+                    Text("Top Rated", style: context.text.titleMedium?.copyWith(color: Colors.white),),
                     Spacer(),
-                    Text("See all", style: TextStyle(color: Colors.blueAccent)),
+                    Text("See all", style: context.text.titleMedium?.copyWith(color: Colors.blueAccent)),
                   ],
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 6),
                 Row(
                   children: [
                     Expanded(
@@ -203,6 +204,70 @@ class HomeScreen extends ConsumerWidget {
                                     width: 111,
                                     child: Center(
                                       child: Text(
+                                        "${topRatedMovie?.title}", style: context.text.bodySmall?.copyWith(color: Colors.white),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  children: [
+                    Text("Top Rated", style: context.text.titleMedium?.copyWith(color: Colors.white),),
+                    Spacer(),
+                    Text("See all", style: context.text.titleMedium?.copyWith(color: Colors.blueAccent)),
+                  ],
+                ),
+                SizedBox(height: 12),
+                Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        height:
+                        195, // enough for image (135) + gap (6) + 2 lines of text
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: topRatedMovies?.length,
+                          itemBuilder: (context, index) {
+                            final topRatedMovie = topRatedMovies?[index];
+                            return Padding(
+                              padding: EdgeInsets.only(right: 12),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 16,
+                                      horizontal: 12,
+                                    ),
+                                    height: 135,
+                                    width: 111,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      // color: Colors.grey,
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          TmdbImage.poster(
+                                            topRatedMovie?.posterPath,
+                                          ),
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 6),
+                                  SizedBox(
+                                    width: 111,
+                                    child: Center(
+                                      child: Text(
                                         "${topRatedMovie?.title}",
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
@@ -221,7 +286,7 @@ class HomeScreen extends ConsumerWidget {
                 SizedBox(height: 20),
                 Row(
                   children: [
-                    Text("Top Rated"),
+                    Text("Top Rated", style: context.text.titleMedium?.copyWith(color: Colors.white),),
                     Spacer(),
                     Text("See all", style: TextStyle(color: Colors.blueAccent)),
                   ],
@@ -285,71 +350,7 @@ class HomeScreen extends ConsumerWidget {
                 SizedBox(height: 20),
                 Row(
                   children: [
-                    Text("Top Rated"),
-                    Spacer(),
-                    Text("See all", style: TextStyle(color: Colors.blueAccent)),
-                  ],
-                ),
-                SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height:
-                        195, // enough for image (135) + gap (6) + 2 lines of text
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: topRatedMovies?.length,
-                          itemBuilder: (context, index) {
-                            final topRatedMovie = topRatedMovies?[index];
-                            return Padding(
-                              padding: EdgeInsets.only(right: 12),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 16,
-                                      horizontal: 12,
-                                    ),
-                                    height: 135,
-                                    width: 111,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      // color: Colors.grey,
-                                      image: DecorationImage(
-                                        image: NetworkImage(
-                                          TmdbImage.poster(
-                                            topRatedMovie?.posterPath,
-                                          ),
-                                        ),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 6),
-                                  SizedBox(
-                                    width: 111,
-                                    child: Center(
-                                      child: Text(
-                                        "${topRatedMovie?.title}",
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  children: [
-                    Text("Top Rated"),
+                    Text("Top Rated", style: context.text.titleMedium?.copyWith(color: Colors.white),),
                     Spacer(),
                     Text("See all", style: TextStyle(color: Colors.blueAccent)),
                   ],
