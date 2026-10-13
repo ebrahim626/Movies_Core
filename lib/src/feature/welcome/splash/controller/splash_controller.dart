@@ -14,6 +14,9 @@ final splashNextRouteProvider = FutureProvider.autoDispose<String>((ref) async {
   // await cacheService.setBearerToken(apiKey);
   // await cacheService.setLoggedIn(true);
   // log("Bearer Token set");
+  //
+  // cacheService.clearAuthTokens();
+  // cacheService.setLoggedIn(false);
 
   debugPrint("Splash: isLoggedIn = $isLoggedIn");
 
