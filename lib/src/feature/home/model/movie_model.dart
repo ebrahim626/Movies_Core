@@ -35,11 +35,13 @@ class HomeData {
   final List<Movie> popular;
   final List<Movie> upcoming;
   final List<Movie> topRated;
+  final List<Movie> nowPlaying;
 
   const HomeData({
     required this.popular,
     required this.upcoming,
     required this.topRated,
+    required this.nowPlaying,
   });
 }
 

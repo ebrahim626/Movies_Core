@@ -25,9 +25,13 @@ class HomeProvider extends AsyncNotifier <HomeData> {
     final upcomingData = upcomingResponse.data["results"] as List;
     final upcoming = upcomingData.map((e) => Movie.fromJson(e as Map<String, dynamic>)).toList();
 
+    final nowPlayingResponse = await repository.nowPlayingMovies();
+    final nowPlayingData = nowPlayingResponse.data["results"] as List;
+    final nowPlaying = nowPlayingData.map((e) => Movie.fromJson(e as Map<String, dynamic>)).toList();
+
     // log("upcoming movies data : ${upcoming.map((movie) => movie.title).toList()}");
 
-    return HomeData(popular: popular, upcoming: upcoming, topRated: topRated);
+    return HomeData(popular: popular, upcoming: upcoming, topRated: topRated, nowPlaying: nowPlaying);
 
 
   }
