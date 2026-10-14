@@ -70,8 +70,8 @@ class HomeScreen extends ConsumerWidget {
                 const SizedBox(height: 6),
 
                 MovieSection(
-                  title: "Top Rated",
-                  movies: home.value?.topRated ?? const [],
+                  title: "Now Playing",
+                  movies: home.value?.nowPlaying ?? const [],
                   isLoading: isLoading,
                   onSeeAll: () {},
                 ),
@@ -85,14 +85,7 @@ class HomeScreen extends ConsumerWidget {
                   onSeeAll: () {},
                 ),
 
-                const SizedBox(height: 6),
-
-                MovieSection(
-                  title: "Top Rated",
-                  movies: home.value?.topRated ?? const [],
-                  isLoading: isLoading,
-                  onSeeAll: () {},
-                ),
+                const SizedBox(height: 16),
               ],
             ),
           ),
