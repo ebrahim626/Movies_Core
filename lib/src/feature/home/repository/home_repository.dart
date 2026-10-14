@@ -34,4 +34,12 @@ class HomeRepository {
       path: ApiEndpoints.upcomingMoviesEndpoint,
     );
   }
+
+  Future<ApiResponse<dynamic>> nowPlayingMovies() async {
+    return await apiClient.get(
+      apiType: APIType.private,
+      tokenType: TokenType.bearerToken,
+      path: ApiEndpoints.nowPlayingMoviesEndpoint,
+    );
+  }
 }
