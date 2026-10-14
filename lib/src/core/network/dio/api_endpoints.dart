@@ -20,4 +20,7 @@ class ApiEndpoints {
 
   static const String upcomingMoviesEndpoint = "$_v1/movie/upcoming";
 
+  static const String nowPlayingMoviesEndpoint = "$_v1/movie/now_playing";
+
+
 }
