@@ -3,6 +3,8 @@ import 'dart:developer';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_core/src/feature/home/repository/home_repository.dart';
+import '../../../core/config/constant/app_key.dart';
+import '../../../core/database/hive_service.dart';
 import '../model/movie_model.dart';
 
 final homeProvider = AsyncNotifierProvider<HomeProvider, HomeData>(
@@ -33,6 +35,14 @@ class HomeProvider extends AsyncNotifier <HomeData> {
 
     return HomeData(popular: popular, upcoming: upcoming, topRated: topRated, nowPlaying: nowPlaying);
 
+  }
+
+  void logOut () async {
+    final cacheService = ref.read(cacheServiceProvider);
+    // final String apiKey = AppKey.readAccessToken;
+    // await cacheService.setBearerToken(apiKey);
+    cacheService.clearAuthTokens();
+    cacheService.setLoggedIn(false);
 
   }
 
