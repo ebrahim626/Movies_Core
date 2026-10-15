@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movies_core/src/core/router/app_routes.dart';
 import 'package:movies_core/src/core/utils/theme/app_tokens.dart';
 import 'package:movies_core/src/feature/home/controller/home_controller.dart';
 import 'package:movies_core/src/feature/home/view/components/popular_carousel.dart';
@@ -15,6 +17,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final home = ref.watch(homeProvider);
+    final notifier = ref.read(homeProvider.notifier);
     final isLoading = !home.hasValue && home.isLoading; // first load only
 
     return Scaffold(
@@ -47,9 +50,18 @@ class HomeScreen extends ConsumerWidget {
                       ],
                     ),
                     Spacer(),
-                    Icon(Icons.search, color: Colors.white,),
+                    InkWell(
+                      child: Icon(Icons.search, color: Colors.white),
+                      onTap: () {
+                        notifier.logOut();
+                        context.push(AppRoutes.landingRoute);
+                      },
+                    ),
                     SizedBox(width: 6),
-                    Icon(Icons.notifications_none_outlined, color: Colors.white,),
+                    Icon(
+                      Icons.notifications_none_outlined,
+                      color: Colors.white,
+                    ),
                   ],
                 ),
                 SizedBox(height: 20),
